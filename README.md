@@ -4,6 +4,47 @@
 
 PaperTrace 不是另一个“AI 百分比”页面。它把英文检测器、中文检测报告、段落热力、误判提示和修改建议放在一个工作台里，帮助用户判断论文哪里缺少证据、引用、作者判断和真实研究痕迹。
 
+## 先说清楚：怎么打开
+
+GitHub 上的代码不能直接点开运行。`http://127.0.0.1:4173/` 是你自己电脑上的本地地址，不是公共网址。
+
+如果你只是想试用，有三种方式：
+
+### 方式一：本地运行
+
+```bash
+git clone https://github.com/shit466/aigc-tester.git
+cd aigc-tester
+npm install
+npm run dev
+```
+
+然后打开终端显示的地址，通常是：
+
+```txt
+http://127.0.0.1:4173/
+```
+
+### 方式二：构建后预览
+
+```bash
+npm install
+npm run build
+npm run preview
+```
+
+然后打开终端显示的本地地址。
+
+### 方式三：GitHub Pages
+
+仓库包含 GitHub Pages 自动部署配置。推送到 `main` 后，GitHub Actions 会构建静态页面。部署完成后，理论访问地址是：
+
+```txt
+https://shit466.github.io/aigc-tester/
+```
+
+如果这个地址打不开，需要到 GitHub 仓库的 `Actions` 页面确认部署是否完成，或到 `Settings -> Pages` 确认 Pages 是否启用。
+
 ## 功能
 
 - 中英文/混合论文段落拆分
@@ -21,7 +62,16 @@ PaperTrace 不是另一个“AI 百分比”页面。它把英文检测器、中
 
 PDF 解析依赖文档本身包含可复制文本。扫描版或图片型 PDF 需要先 OCR。
 
-## 本地运行
+## 使用流程
+
+1. 打开页面。
+2. 点击 **上传论文**，选择 `.txt`、`.md`、`.docx` 或可复制文本的 `.pdf`。
+3. 或者直接把论文文本粘贴到左侧文本框。
+4. 点击 **运行诊断**。
+5. 查看右侧段落热力、风险百分比和修改建议。
+6. 调整 **严格度**、**引用权重** 后可重新诊断。
+
+## 开发命令
 
 ```bash
 npm install
@@ -29,8 +79,6 @@ npm run dev
 ```
 
 打开终端输出的本地地址，通常是 `http://127.0.0.1:4173/`。
-
-## 构建
 
 ```bash
 npm run build
